@@ -17,7 +17,7 @@ def payoff_matrix(move_a, move_b):
 
 def play_iterated_game(player_a, player_b):
     """An iterated game represents 100 matches between two strategies. At the end of
-    the game, the function returns the score of each strategy."""
+    the game, the function returns the average score of each strategy."""
     net_score_a = net_score_b = 0
     for i in range(100):
         move_a = player_a.move()
@@ -27,5 +27,5 @@ def play_iterated_game(player_a, player_b):
         net_score_b += score_b
         player_a.update([move_a, move_b])
         player_b.update([move_b, move_a])
-    return net_score_a, net_score_b
+    return net_score_a / 100, net_score_b / 100
 

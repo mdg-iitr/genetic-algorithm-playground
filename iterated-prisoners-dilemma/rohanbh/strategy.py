@@ -2,8 +2,8 @@
 
 class Strategy:
     """A strategy remembers the previous 3 games and makes the next move based on the 
-    game history. A cooperation (C) is represented by '0' while a defection (D) is 
-    represented by '1'."""
+    game history. A cooperation (C) is represented by 0 while a defection (D) is 
+    represented by 1"""
 
     def __init__(self, encoding):
         self.encoding = encoding
