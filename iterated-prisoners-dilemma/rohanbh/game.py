@@ -19,6 +19,8 @@ def play_iterated_game(player_a, player_b):
     """An iterated game represents 100 matches between two strategies. At the end of
     the game, the function returns the average score of each strategy."""
     net_score_a = net_score_b = 0
+    player_a.reset_history()
+    player_b.reset_history()
     for i in range(100):
         move_a = player_a.move()
         move_b = player_b.move()

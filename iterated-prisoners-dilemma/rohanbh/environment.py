@@ -14,7 +14,15 @@ def mutate(offspring, pm):
     """Mutate the offspring with mutation probability pm at each locus"""
     offspring.encoding = [1 ^ bit if random.random() <= pm else bit for bit in offspring.encoding]
     
-
+def compute_fitness(strategies, fitness):
+    for i in range(0, 20):
+        for j in range(i, 20):
+            x, y = play_iterated_game(strategies[i], strategies[j])
+            fitness[i] += x
+            fitness[j] += y
+    fitness = [f/20 for f in fitness]
+    return fitness
+    
 class Population:
     """A population represents 20 strategies that evolve together over generations"""
 
@@ -26,13 +34,8 @@ class Population:
 
     def evolve(self):
         """Evolves a population by calculating fitness and applying GA operators"""
-        for i in range(0, 20):
-            for j in range(i, 20):
-                x, y = play_iterated_game(self.strategies[i], self.strategies[j])
-                if i >= 20: print(i)
-                self.fitness[i] += x
-                self.fitness[j] += y
-        self.fitness = [f/20 for f in self.fitness]
+        self.fitness = [0] * 20
+        self.fitness = compute_fitness(self.strategies, self.fitness)
 
         # Fitness proportionate selection
         parents = random.choices(self.strategies, self.fitness, k = 20)
