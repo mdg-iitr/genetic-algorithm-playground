@@ -1,6 +1,4 @@
-# Genetic-Algorithm
-
-## 1. Shakespearean Monkey Example
+# Shakespearean Monkey Example
 A monkey is typing on a keyboard randomly, What is the probability that he will be able to type the all the works of Shakespeare?? Probably 0. But what if he is typing for an infinite time.
 
 ### Implementation
